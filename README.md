@@ -7,8 +7,8 @@ Code and data that reproduce Tables 1 to 6 of the manuscript "Economics of Medic
 | Source | Where | In this repository? |
 |---|---|---|
 | CMS Physician/Supplier Procedure Summary (PSPS), CY2025, public use file (free). Full file: 14,474,585 rows. Downloaded October 23, 2026. https://data.cms.gov/summary-statistics-on-use-and-payments/physiciansupplier-procedure-summary | CMS | No (330 MB zip). Download it yourself. |
-| Eight-code extract of the PSPS file (139,875 rows: HCPCS 11042, 11043, 11044, 11045, 11046, 11047, 97597, 97598) | `data/extract/PSPS25_8codes.csv` | Yes |
-| U.S. Census Bureau 2023 National Population Projections, main series, `np2023_d1_mid.csv`. https://www2.census.gov/programs-surveys/popproj/datasets/2023/2023-popproj/np2023_d1_mid.csv | Census | Yes (`data/raw/`) |
+| Eight-code extract of the PSPS file (139,875 rows: HCPCS 11042, 11043, 11044, 11045, 11046, 11047, 97597, 97598) | `PSPS25_8codes.csv` | Yes |
+| U.S. Census Bureau 2023 National Population Projections, main series, `np2023_d1_mid.csv`. https://www2.census.gov/programs-surveys/popproj/datasets/2023/2023-popproj/np2023_d1_mid.csv | Census | Yes (repository root) |
 
 Do not use the paid Limited Data Set page. Columns used: `HCPCS_CD`, `PLACE_OF_SERVICE_CD`, `PSPS_SUBMITTED_SERVICE_CNT`, `PSPS_NCH_PAYMENT_AMT`.
 
@@ -18,14 +18,14 @@ Command line (use the extract, or the full CMS zip):
 
 ```
 pip install -r requirements.txt
-python psps_debridement.py --psps data/extract/PSPS25_8codes.csv --census data/raw/np2023_d1_mid.csv --out results
+python psps_debridement.py --psps PSPS25_8codes.csv --census np2023_d1_mid.csv --out results
 ```
 
 Google Colab: open `PSPS_Debridement_Colab.ipynb`, upload the PSPS file (extract or full zip) when prompted, and run all cells.
 
 Outputs: one CSV per table and `psps_tables.xlsx` in the output folder.
 
-An Excel version with live formulas, built step by step from the same raw data, is in `excel/PSPS25_Steps.xlsx`.
+An Excel version with live formulas, built step by step from the same raw data, is in `PSPS25_Steps.xlsx`.
 
 ## Check the install
 
@@ -56,4 +56,4 @@ Farahati F, Rahimian M. Economics of Medicare Debridement in Aggregate Claims: A
 
 Code: MIT License (see `LICENSE`). Copyright (c) 2026 Farah Farahati, Global Wellness Advisors LLC.
 
-Data: the CMS PSPS file and the Census projections are U.S. government public data and remain subject to the terms of their publishers. The extract in `data/extract/` contains only rows from the public CMS file.
+Data: the CMS PSPS file and the Census projections are U.S. government public data and remain subject to the terms of their publishers. The extract in the repository root contains only rows from the public CMS file.
